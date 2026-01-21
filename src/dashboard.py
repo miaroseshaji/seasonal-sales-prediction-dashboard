@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import numpy as np
+from pathlib import Path
 from scipy import stats
 
 from sklearn.linear_model import LinearRegression
@@ -24,12 +25,10 @@ st.title("📊 Seasonal Sales Prediction Dashboard")
 # =====================================
 @st.cache_data
 def load_data():
-    file_path = r"C:\Users\Admin\Desktop\seasonal_sales_prediction\Online Retail-Copy1.xlsx"
-    df = pd.read_excel(file_path)
-    return df
+    file_path = Path(__file__).parent.parent / "cleaned_data.xlsx"
+    return pd.read_excel(file_path)
 
 df = load_data()
-
 # =====================================
 # DATA PREPARATION
 # =====================================
